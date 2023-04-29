@@ -1,9 +1,9 @@
 import mongoose from "mongoose";
 import  { transformDTO } from "../DTOS/dtoProducts.js";
-import logger from "../../loggers/logger.js"
+import logger from "../../Loggers/logger.js"
 
 
-class productsDao {
+export default class productsDao {
 
 	constructor(url, productModel) {
 		this.url = url;
@@ -75,4 +75,3 @@ class productsDao {
 	}
 }
 
-export default productsDao;

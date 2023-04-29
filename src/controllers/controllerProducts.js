@@ -16,9 +16,15 @@ export default class ProductsController {
 		}
 	};
 
-	getProductsHome = async (req, res) => {
-		let respuesta = await this.prodService.getProducts(req, res);
-		return { ...respuesta };
+	productForUser = async (req, res) => {
+		try {
+			const { id } = req.params;
+			let products = await this.prodService.getProducts(id);
+			return { ...products };
+		} catch (error) {
+			console.error(error);
+		}
+		
 	};
 
 	listProducts = async () => {
@@ -29,6 +35,7 @@ export default class ProductsController {
 	postProduct = async (req, res) => {
 		try {
 			let product = req.body;
+			product.id =  await this.prodService.getNextId()
 			let newProd = await this.prodService.postProduct(product);
 			res.json(newProd);
 			console.log("Producto Creado");
@@ -62,4 +69,5 @@ export default class ProductsController {
 			console.log(error);
 		}
 	};
+
 }

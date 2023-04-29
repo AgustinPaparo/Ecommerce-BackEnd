@@ -4,9 +4,10 @@ import session from "express-session";
 import passport from "passport";
 import MongoStore from "connect-mongo";
 import dotenv from "dotenv";
-import logger from "./src/loggers/logger.js";
+import logger from "./src/Loggers/logger.js";
 
 import routerProducts from "./src/routes/routerProducts.js";
+import { USER_ROUTER } from "./src/Routes/routerUser.js";
 
 dotenv.config();
 
@@ -34,12 +35,21 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(express.static("public"));
 
+///////////////////////////////////////////// MOTOR DE PLANTILLAS /////////////////////////////////////////////
+
+app.set("views", "./views");
+app.set("view engine", "pug");
+
 ///////////////////////////////////////////// DECLARACION DE RUTAS /////////////////////////////////////////////
-const PRODUCTS_ROUTER = new routerProducts()
+const PRODUCTS_ROUTER = new routerProducts();
+
 app.use("/productos", PRODUCTS_ROUTER.start());
+app.use("/", USER_ROUTER);
 // app.use("/carrito", routerApiCarrito);
-// app.use("/", routerApiUserPass);
 // app.use("/", routerApiPedido);
+app.get("/", (req, res) => {
+	res.redirect("/productos");
+});
 app.get("*", (req, res) => {
 	logger.warn(`invalid route: ${req.headers.referer}`);
 	res.json({ error: "la ruta no existe" });

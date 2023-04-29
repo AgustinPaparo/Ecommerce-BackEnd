@@ -1,8 +1,8 @@
-import productsFactory from "../Persistence/Factories/factoryProducts.js";
+import Factory from "../Persistence/DAOS/factory.js";
 
 export default class ProductsServices {
 	constructor() {
-		this.productsDAO = productsFactory.getDao();
+		this.productsDAO = Factory.getDao('products');
 	}
 
 	getProducts = async (id) => {
@@ -25,5 +25,10 @@ export default class ProductsServices {
 		return await this.productsDAO.deleteById(id);
 	};
 
-	
+	getNextId = async () => {
+		let array = await this.productsDAO.getAll()
+		JSON.stringify(array)
+		let length = array.length
+		return length? parseInt( length + 1) : 1
+	}
 }
