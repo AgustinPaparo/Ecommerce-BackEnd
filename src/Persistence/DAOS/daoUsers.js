@@ -1,29 +1,10 @@
-import mongoose from "mongoose";
-import bcrypt from "bcrypt"
 import logger from "../../Loggers/logger.js";
 import { transformDTO } from "../DTOS/dtoUsers.js";
 
+
 export default class usersDao {
-	constructor(url, userModel) {
-		this.url = url;
+	constructor(userModel) {
 		this.users = userModel;
-	}
-
-	async init() {
-		try {
-			await mongoose.connect(this.url, {
-				useNewUrlParser: true,
-				useUnifiedTopology: true,
-			});
-			logger.info("MongoDb Connected");
-		} catch (error) {
-			logger.error("Error connecting to database", error);
-		}
-	}
-
-	async disconnect() {
-		await mongoose.disconnect();
-		console.log("MongoDb Disconnected");
 	}
 
 	getAll = async () => {

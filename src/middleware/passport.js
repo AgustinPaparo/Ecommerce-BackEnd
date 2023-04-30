@@ -47,7 +47,10 @@ export const signup = new LocalStrategy (
 						mail: username,
 						password: createHash(password),
 						foto: data.foto? data.foto : defaultPhoto,
-						numero: data.numero
+						numero: data.numero,
+						carrito: {
+							productos: {},
+						}
 					}
 					await service.createUser(newUser);
 					// await Correo(USER, subject, mensaje); //cambiar el servicio cuando lo cree

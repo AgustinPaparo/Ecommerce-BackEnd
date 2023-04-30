@@ -9,38 +9,35 @@ export default class ProductsController {
 		try {
 			const { id } = req.params;
 			let products = await this.prodService.getProducts(id);
-			res.json(products);
-			console.log(products);
+			res.status(200).json(products);
+			console.log(req.session);
 		} catch (error) {
-			throw new Error();
+			console.error(error);
+			res.status(404)
 		}
 	};
 
 	productForUser = async (req, res) => {
 		try {
-			const { id } = req.params;
-			let products = await this.prodService.getProducts(id);
-			return { ...products };
+			let products = await this.prodService.getProducts();
+			return products;
 		} catch (error) {
 			console.error(error);
+			res.status(404)
 		}
 		
-	};
-
-	listProducts = async () => {
-		let respuesta = await this.prodService.listProducts();
-		return respuesta;
-	};
+	}; // Paso los productos como un objeto.
 
 	postProduct = async (req, res) => {
 		try {
 			let product = req.body;
 			product.id =  await this.prodService.getNextId()
 			let newProd = await this.prodService.postProduct(product);
-			res.json(newProd);
+			res.status(201).json(newProd);
 			console.log("Producto Creado");
 		} catch (error) {
-			console.log(error);
+			console.error(error);
+			res.status(404)
 		}
 	};
 
@@ -52,10 +49,11 @@ export default class ProductsController {
 				selectedProduct,
 				changes
 			);
-			res.json(changedProduct);
+			res.status(302).json(changedProduct);
 			console.log("Producto Actualizado");
 		} catch (error) {
-			console.log(error);
+			console.error(error);
+			res.status(404)
 		}
 	};
 
@@ -63,10 +61,11 @@ export default class ProductsController {
 		try {
 			let { id } = req.params;
 			let deletedProduct = await this.prodService.deleteProduct(id);
-			res.json(deletedProduct);
+			res.status(202).json(deletedProduct);
 			console.log("Producto Borrado");
 		} catch (error) {
-			console.log(error);
+			console.error(error);
+			res.status(404)
 		}
 	};
 

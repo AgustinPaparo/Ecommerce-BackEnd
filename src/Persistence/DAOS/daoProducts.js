@@ -1,31 +1,11 @@
-import mongoose from "mongoose";
 import  { transformDTO } from "../DTOS/dtoProducts.js";
 import logger from "../../Loggers/logger.js"
 
 
 export default class productsDao {
 
-	constructor(url, productModel) {
-		this.url = url;
+	constructor(productModel) {
 		this.products = productModel;
-	}
-
-	async init() {
-		try {
-			await mongoose.connect(this.url, {
-				useNewUrlParser: true,
-				useUnifiedTopology: true,
-			});
-			logger.info("MongoDb Connected");
-		} catch (error) {
-			logger.error("Error connecting to database", error);
-		}
-		
-	}
-
-	async disconnect() {
-		await mongoose.disconnect();
-		console.log("MongoDb Disconnected");
 	}
 
 	getAll = async() =>{

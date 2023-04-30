@@ -6,8 +6,9 @@ import MongoStore from "connect-mongo";
 import dotenv from "dotenv";
 import logger from "./src/Loggers/logger.js";
 
-import routerProducts from "./src/routes/routerProducts.js";
 import { USER_ROUTER } from "./src/Routes/routerUser.js";
+import routerProducts from "./src/routes/routerProducts.js";
+import routerCart from "./src/Routes/routerCart.js";
 
 dotenv.config();
 
@@ -42,17 +43,18 @@ app.set("view engine", "pug");
 
 ///////////////////////////////////////////// DECLARACION DE RUTAS /////////////////////////////////////////////
 const PRODUCTS_ROUTER = new routerProducts();
+const CART_ROUTER = new routerCart()
 
-app.use("/productos", PRODUCTS_ROUTER.start());
 app.use("/", USER_ROUTER);
-// app.use("/carrito", routerApiCarrito);
+app.use("/productos", PRODUCTS_ROUTER.start());
+app.use("/shop", CART_ROUTER.start());
 // app.use("/", routerApiPedido);
 app.get("/", (req, res) => {
 	res.redirect("/productos");
 });
 app.get("*", (req, res) => {
 	logger.warn(`invalid route: ${req.headers.referer}`);
-	res.json({ error: "la ruta no existe" });
+	res.status(404).json({ ERROR: "The requested URL was not found on this server." });
 });
 
 const PORT = process.env.PORT || 8080;
