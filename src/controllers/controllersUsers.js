@@ -1,6 +1,6 @@
 import UsersServices from "../Services/servicesUsers.js";
 import CartsServices from "../Services/servicesCarts.js"
-import ProductsController from "../Controllers/controllerProducts.js"
+import ProductsController from "./controllerProducts.js"
 
 const producstController = new ProductsController()
 const userService = new UsersServices()

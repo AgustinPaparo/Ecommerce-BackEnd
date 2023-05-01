@@ -6,9 +6,9 @@ import passport from "passport";
 import MongoStore from "connect-mongo";
 import logger from "./src/utils/Loggers/logger.js";
 
-import { USER_ROUTER } from "./src/Routes/routerUser.js";
-import routerProducts from "./src/Routes/routerProducts.js";
-import routerCart from "./src/Routes/routerCart.js";
+import { USER_ROUTER } from "./src/routes/routerUser.js";
+import routerProducts from "./src/routes/routerProducts.js";
+import routerCart from "./src/routes/routerCart.js";
 
 
 

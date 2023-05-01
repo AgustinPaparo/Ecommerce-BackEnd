@@ -12,7 +12,7 @@ import productModel from "../Models/modelProduct.js";
 import userModel from "../Models/modelUser.js";
 
 const url = Config.MONGOURL;
-const NODE_ENV = Config.NODE_ENV
+// const NODE_ENV = Config.NODE_ENV
 
 const route = path.resolve(process.cwd(), `${process.env.NODE_ENV}.env`)
 
@@ -30,8 +30,8 @@ export default class Factory {
 				dao = new cartDao(userModel);
 				break;
 			case "orders":
-				// if(NODE_ENV = "prod"){
-				// 	// dao = new ordersDaoDB( orderModel )
+				// if(NODE_ENV == "prod"){
+				// 	dao = new ordersDaoDB( orderModel )
 				// }
 				dao = new ordersDao("./orders.json");
 				break;

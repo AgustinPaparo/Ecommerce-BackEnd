@@ -1,7 +1,7 @@
 import express from "express";
 import passport from "passport";
 import { login, signup } from "../middleware/passport.js";
-import * as controllersUsers from "../Controllers/controllersUsers.js";
+import * as controllersUsers from "../controllers/controllersUsers.js";
 import authentication from "../middleware/auth.js";
 
 ///////////////////////////////////////////// PASSPORT /////////////////////////////////////////////
