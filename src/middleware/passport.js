@@ -2,7 +2,7 @@ import LocalStrategy from "passport-local";
 import Config from "../../Config.js";
 import bcrypt from "bcrypt";
 import UsersServices from "../Services/servicesUsers.js";
-import {getUsersList} from "../Controllers/controllersUsers.js"
+import {getUsersList} from "../controllers/controllersUsers.js"
 import {nodemailerRegister} from "../utils/serviceMediaReport.js"
 
 
