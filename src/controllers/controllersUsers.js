@@ -19,7 +19,7 @@ export const login = async (req, res) => {
 				Catálgo: products,
 			});
 		} else {
-			res.render('User/login');;
+			res.status(200).render('User/login');
 		}
 	} catch (error) {
 		console.error(error);
@@ -43,12 +43,12 @@ export const errorLogin = async (req, res) => {
 export const signup = async (req, res) => {
 	try {
 		if (await req.isAuthenticated()) {
-			// let cart = await getCurrentCarrito( toString(req.user.mail) ) // servicio de carrito
-			// let products = await productForUser() // servico de productos
+			let cart = await cartService.getCart(req.user.id) 
+			let products = await producstController.productForUser() 
 			res.json({
-				Mensaje: "Sesión Iniciada exitosamente",
-				Carrito: "aca va el carrito del usuario",
-				Catálgo: "aca va el catalgo",
+				Mensaje: req.user.mail +" tenes una sesion activa",
+				Carrito: cart,
+				Catálgo: products,
 			});
 		} else {
 			res.render('User/signup');
@@ -63,7 +63,7 @@ export const signup = async (req, res) => {
 
 export const errorsignup = async (req, res) => {
 	try {
-		res.render('User/signup-error');
+		res.status(400).render('User/signup-error');
 	} catch (error) {
 		console.error(error);
 		res.status(500)

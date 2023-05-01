@@ -7,7 +7,7 @@ import MongoStore from "connect-mongo";
 import logger from "./src/utils/Loggers/logger.js";
 
 import { USER_ROUTER } from "./src/Routes/routerUser.js";
-import routerProducts from "./src/routes/routerProducts.js";
+import routerProducts from "./src/Routes/routerProducts.js";
 import routerCart from "./src/Routes/routerCart.js";
 
 
@@ -49,10 +49,9 @@ const CART_ROUTER = new routerCart()
 app.use("/", USER_ROUTER);
 app.use("/productos", PRODUCTS_ROUTER.start());
 app.use("/shop", CART_ROUTER.start());
-// app.use("/", routerApiPedido);
 app.get("/", (req, res) => {
 	res.redirect("/productos");
-});
+})
 app.get("*", (req, res) => {
 	logger.warn(`invalid route: ${req.headers.referer}`);
 	res.status(404).json({ ERROR: "The requested URL was not found on this server." });

@@ -51,7 +51,7 @@ export const signup = new LocalStrategy (
 						carrito: []
 					}
 					await service.createUser(newUser);
-					// await Correo(USER, subject, mensaje); //cambiar el servicio cuando lo cree
+					// await servicio cuando lo cree 
 					done(null, newUser);
 				} else{
 					console.log('No coinciden las contraseñas');
