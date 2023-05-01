@@ -1,1 +1,13 @@
-[{"user":"prueba","products":[{"prodName":"zapato","precio":40000,"quantity":2},{"prodName":"Camisa","precio":34000,"quantity":2},{"prodName":"Remera","precio":8000,"quantity":1},{"prodName":"zapatilla","precio":60000,"quantity":1}],"total":"$142000","timestamp":"2023-05-01T01:40:09.870Z"}]
+[
+	{
+		"user": "prueba",
+		"products": [
+			{ "prodName": "zapato", "precio": 40000, "quantity": 2 },
+			{ "prodName": "Camisa", "precio": 34000, "quantity": 2 },
+			{ "prodName": "Remera", "precio": 8000, "quantity": 1 },
+			{ "prodName": "zapatilla", "precio": 60000, "quantity": 1 }
+		],
+		"total": "$142000",
+		"timestamp": "2023-05-01T01:40:09.870Z"
+	}
+]
