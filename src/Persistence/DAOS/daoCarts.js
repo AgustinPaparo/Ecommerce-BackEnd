@@ -1,17 +1,28 @@
-import logger from "../../Loggers/logger.js";
+import logger from "../../utils/Loggers/logger.js";
 
 export default class cartDao {
 
-	constructor( userModel) {
+	constructor(userModel) {
 		this.cart = userModel;
 	}
 
-	async searchInCart (userId){
+	async getCart (userId){
 		try {
 			let user = await this.cart.findOne({id : userId})
 			return user.carrito // Array de objetos
 		} catch (error) {
 			logger.error("Error al buscar el carrito" + error);
+		}
+	}
+
+	async getUser(userId) {
+		try {
+			let user = await this.cart.findOne({id : userId})
+			return user
+		} catch (error) {
+			logger.error("Error al buscar el usuario con id = " + id + error);
+			let user = undefined
+			return user
 		}
 	}
 

@@ -1,16 +1,20 @@
 import mongoose from "mongoose";
-import dotenv from "dotenv";
-import logger from "../../Loggers/logger.js";
+import Config from "../../../Config.js";
+import logger from "../../utils/Loggers/logger.js";
+import path from "path"
 
 import productsDao from "./daoProducts.js";
 import usersDao from "./daoUsers.js";
 import cartDao from "./daoCarts.js";
+import ordersDao from "./daoOrder.js";
 
 import productModel from "../Models/modelProduct.js";
 import userModel from "../Models/modelUser.js";
 
-dotenv.config();
-const url = process.env.MONGOURL;
+const url = Config.MONGOURL;
+const NODE_ENV = Config.NODE_ENV
+
+const route = path.resolve(process.cwd(), `${process.env.NODE_ENV}.env`)
 
 export default class Factory {
 	static getDao(option) {
@@ -24,6 +28,12 @@ export default class Factory {
 				break;
 			case "carts":
 				dao = new cartDao(userModel);
+				break;
+			case "orders":
+				// if(NODE_ENV = "prod"){
+				// 	// dao = new ordersDaoDB( orderModel )
+				// }
+				dao = new ordersDao("./orders.json");
 				break;
 		}
 

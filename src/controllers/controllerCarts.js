@@ -55,4 +55,17 @@ export default class CartController {
 			res.status(400)
 		}
 	}
+
+	checkout = async (req, res) => {
+		try {
+			const userId = req.body.id
+			let newOrder = await this.cartService.checkout(userId)
+			console.log(newOrder);
+			res.status(200).json(newOrder)
+		} catch (error) {
+			console.error(error);
+			res.status(402)
+		}
+
+	}
 }

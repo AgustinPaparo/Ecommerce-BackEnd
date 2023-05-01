@@ -1,5 +1,5 @@
 import  { transformDTO } from "../DTOS/dtoProducts.js";
-import logger from "../../Loggers/logger.js"
+import logger from "../../utils/Loggers/logger.js"
 
 
 export default class productsDao {

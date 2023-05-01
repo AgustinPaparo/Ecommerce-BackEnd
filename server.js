@@ -1,16 +1,17 @@
 import express from "express";
 import session from "express-session";
 
+import config from "./Config.js"
 import passport from "passport";
 import MongoStore from "connect-mongo";
-import dotenv from "dotenv";
-import logger from "./src/Loggers/logger.js";
+import logger from "./src/utils/Loggers/logger.js";
 
 import { USER_ROUTER } from "./src/Routes/routerUser.js";
 import routerProducts from "./src/routes/routerProducts.js";
 import routerCart from "./src/Routes/routerCart.js";
 
-dotenv.config();
+
+
 
 ///////////////////////////////////////////// EXPRESS APP /////////////////////////////////////////////
 const app = express();
@@ -19,12 +20,12 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(
 	session({
-		secret: process.env.SECRETMONGO,
+		secret: config.SECRETMONGO,
 		saveUninitialized: false,
 		resave: false,
 		rolling: true,
 		store: MongoStore.create({
-			mongoUrl: process.env.MONGOURL,
+			mongoUrl: config.MONGOURL,
 			mongoOptions: { useNewUrlParser: true, useUnifiedTopology: true },
 		}),
 		cookie: {
@@ -57,7 +58,7 @@ app.get("*", (req, res) => {
 	res.status(404).json({ ERROR: "The requested URL was not found on this server." });
 });
 
-const PORT = process.env.PORT || 8080;
+const PORT = config.PORT
 const server = app.listen(PORT, () => {
 	logger.info(`HTTP server listening on ${server.address().port}`);
 });

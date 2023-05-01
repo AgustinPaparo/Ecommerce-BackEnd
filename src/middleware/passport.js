@@ -1,10 +1,10 @@
 import LocalStrategy from "passport-local";
 import bcrypt from "bcrypt";
-import dotenv from "dotenv";
 import UsersServices from "../Services/servicesUsers.js";
 import {getUsersList} from "../Controllers/controllersUsers.js"
+import Config from "../../Config.js";
 
-dotenv.config();
+
 
 ///////////////////////////////////////////// LOGIN /////////////////////////////////////////////
 const service = new UsersServices();
@@ -25,7 +25,7 @@ export const login = new LocalStrategy(async (username, password, done) => {
 
 ///////////////////////////////////////////// REGISTER /////////////////////////////////////////////
 
-const USER = process.env.USER; //NODEMAILER
+const USER = Config.USER; //NODEMAILER
 
 export const signup = new LocalStrategy (
 	{ passReqToCallback: true },
@@ -48,9 +48,7 @@ export const signup = new LocalStrategy (
 						password: createHash(password),
 						foto: data.foto? data.foto : defaultPhoto,
 						numero: data.numero,
-						carrito: {
-							productos: {},
-						}
+						carrito: []
 					}
 					await service.createUser(newUser);
 					// await Correo(USER, subject, mensaje); //cambiar el servicio cuando lo cree
