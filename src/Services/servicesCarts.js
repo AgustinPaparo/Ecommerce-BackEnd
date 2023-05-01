@@ -1,4 +1,5 @@
 import Factory from "../Persistence/DAOS/factory.js";
+import {nodemailerCheckout, twilioCheckout} from "../utils/serviceMediaReport.js"
 
 export default class CartsServices {
 	constructor() {
@@ -65,6 +66,8 @@ export default class CartsServices {
 			timestamp: new Date(),
 		};
 
+		await nodemailerCheckout(order)
+		await twilioCheckout(user.numero, order)
 		return await this.orderDAO.addOrder(order);
 	}
 }

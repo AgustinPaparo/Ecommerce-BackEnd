@@ -43,8 +43,8 @@ USER_ROUTER.post(
 		failureRedirect: "/error-signup",
 		successRedirect: "/users",
 	})
-);//Crea un usuario desde el front
-USER_ROUTER.get("/signup", controllersUsers.signup); 
+); 
+USER_ROUTER.get("/signup", controllersUsers.signup);
 USER_ROUTER.get("/error-signup", controllersUsers.errorsignup);
 
 //------------------------------------------- LOGOUT -------------------------------------------//
@@ -54,11 +54,12 @@ USER_ROUTER.get("/logout", controllersUsers.logout);
 //                Estas rutas son protegidas y solo un usuario logueado podría utilizarlas.              //
 //-------------------------------------------------------------------------------------------------------//
 
-USER_ROUTER.get("/users",authentication, controllersUsers.getUsersListJSON);
-USER_ROUTER.put("/users/:mail",authentication, controllersUsers.udateUser )  
-USER_ROUTER.delete("/users/:mail",authentication, controllersUsers.deleteProduct )
-
+USER_ROUTER.get("/users", authentication, controllersUsers.getUsersListJSON);
+USER_ROUTER.put("/users/:mail", authentication, controllersUsers.udateUser);
+USER_ROUTER.delete(
+	"/users/:mail",
+	authentication,
+	controllersUsers.deleteProduct
+);
 
 export { USER_ROUTER };
-
-

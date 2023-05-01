@@ -1,13 +1,1 @@
-[
-	{
-		"user": "prueba",
-		"products": [
-			{ "prodName": "zapato", "precio": 40000, "quantity": 2 },
-			{ "prodName": "Camisa", "precio": 34000, "quantity": 2 },
-			{ "prodName": "Remera", "precio": 8000, "quantity": 1 },
-			{ "prodName": "zapatilla", "precio": 60000, "quantity": 1 }
-		],
-		"total": "$142000",
-		"timestamp": "2023-05-01T01:40:09.870Z"
-	}
-]
+[{"user":"prueba","products":[{"prodName":"zapato","precio":40000,"quantity":2},{"prodName":"Camisa","precio":34000,"quantity":2},{"prodName":"Remera","precio":8000,"quantity":1},{"prodName":"zapatilla","precio":60000,"quantity":1}],"total":"$142000","timestamp":"2023-05-01T01:40:09.870Z"},{"user":"prueba","products":[{"prodName":"zapato","precio":40000,"quantity":2},{"prodName":"Camisa","precio":51000,"quantity":3},{"prodName":"Remera","precio":8000,"quantity":1},{"prodName":"zapatilla","precio":180000,"quantity":3}],"total":"$279000","timestamp":"2023-05-01T06:40:34.838Z"},{"user":"cu_entaparajuegos@hotmail.com","products":[{"prodName":"Camisa","precio":17000,"quantity":1},{"prodName":"zapato","precio":20000,"quantity":1}],"total":"$37000","timestamp":"2023-05-01T06:41:47.616Z"},{"user":"cu_entaparajuegos@hotmail.com","products":[{"prodName":"Camisa","precio":17000,"quantity":1},{"prodName":"zapato","precio":20000,"quantity":1}],"total":"$37000","timestamp":"2023-05-01T06:46:12.382Z"},{"user":"cu_entaparajuegos@hotmail.com","products":[{"prodName":"Camisa","precio":17000,"quantity":1},{"prodName":"zapato","precio":20000,"quantity":1}],"total":"$37000","timestamp":"2023-05-01T06:46:55.403Z"},{"user":"cu_entaparajuegos@hotmail.com","products":[{"prodName":"Camisa","precio":17000,"quantity":1},{"prodName":"zapato","precio":20000,"quantity":1}],"total":"$37000","timestamp":"2023-05-01T06:54:34.858Z"},{"user":"cu_entaparajuegos@hotmail.com","products":[{"prodName":"Camisa","precio":17000,"quantity":1},{"prodName":"zapato","precio":20000,"quantity":1}],"total":"$37000","timestamp":"2023-05-01T07:00:13.702Z"}]

@@ -61,6 +61,7 @@ export default class CartController {
 			const userId = req.body.id
 			let newOrder = await this.cartService.checkout(userId)
 			console.log(newOrder);
+			await this.cartService.clearCart(userId)
 			res.status(200).json(newOrder)
 		} catch (error) {
 			console.error(error);

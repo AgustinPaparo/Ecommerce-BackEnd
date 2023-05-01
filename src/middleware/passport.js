@@ -1,8 +1,9 @@
 import LocalStrategy from "passport-local";
+import Config from "../../Config.js";
 import bcrypt from "bcrypt";
 import UsersServices from "../Services/servicesUsers.js";
 import {getUsersList} from "../Controllers/controllersUsers.js"
-import Config from "../../Config.js";
+import {nodemailerRegister} from "../utils/serviceMediaReport.js"
 
 
 
@@ -30,17 +31,13 @@ const USER = Config.USER; //NODEMAILER
 export const signup = new LocalStrategy (
 	{ passReqToCallback: true },
 	async (req, username, password, done) => {
-			console.log("entra aca");
 			const data = req.body;
 			let users = await getUsersList()
 			let length = users.length
 			let defaultPhoto = "../../../public/img/default.png"
 			const user = users.find(u => u.mail == username);
-			// AGREGAR CONF NODEMAILER
 			if (!user) {
-				console.log('verifico que no existe el usuario');
 				if(password === data.repeatPassword){
-					console.log('contraseñas iguales');
 					const newUser = {
 						id: parseInt(length + 1),
 						nombre : data.nombre,
@@ -51,7 +48,7 @@ export const signup = new LocalStrategy (
 						carrito: []
 					}
 					await service.createUser(newUser);
-					// await servicio cuando lo cree 
+					await nodemailerRegister(newUser)
 					done(null, newUser);
 				} else{
 					console.log('No coinciden las contraseñas');
