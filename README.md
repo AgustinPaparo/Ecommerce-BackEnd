@@ -12,9 +12,10 @@
 
 
 <br>
-
 <br>
-<br>
+<hr>
+<p style='text-aling: justify'>Al registrar tu usuario se recomienda utilizar un numero de telefono verdadero y con el formato que utiliza whatsapp para que lleguen las notificaciones de compra exitosa enviadas con TWILIO. Como ejemplo te dejo un número con característica de Buenos Aires, Argentina: +54911********</p>
+<p style='text-aling: justify'>Tambien cabe destacar que para que te lleguen las notificaciones de compra exitosa en whatsapp es necesario enviar <strong>primero</strong> "join realize-prove" a +14155238886 desde tu whatsapp para asi configurar Twilio ya que es una version gratuita de prueba. </p>
 
 
 <hr>
@@ -57,7 +58,7 @@
 | DELETE | /shop/:userid  | Elimina un producto del carrito correspondiente al usuario. Hay que pasarle por el body el id del producto Ej:{"id":4}. |
 | DELETE | /shop/clear    | Vacía el carrito perteneciente la sesión activa. Hay que pasarle el ID del user por el body Ej:{"id":5}                 |
 | PUT    | /shop/:userid  | Agrega un producto al carrito del usuario. Solo es necesario pasarle el ID del producto Ej:{"id":4}.                    |
-| GET    | /shop/checkout | Confirma un pedido con todos los productos que contiene el carrito del usuario.                                         |
+| GET    | /shop/checkout | Confirma un pedido con todos los productos que contiene el carrito del usuario. Pasarle el ID del user por body.        |
 
 <br>
 <br>
